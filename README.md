@@ -379,6 +379,17 @@ Install all required packages using:
 pip install -r requirements.txt
 ```
 
+## Future Enhancements
+
+The current implementation focuses on fulfilling the assessment requirements while keeping the application lightweight. Potential improvements for a production-ready version include:
+
+1. **Database Persistence:** Integrate PostgreSQL to persist beverage inventory, coin balances, and transaction history instead of maintaining application state in memory.
+2. **Concurrency and Transaction Management:** Introduce database-level transactions and row locking to ensure consistent inventory updates when multiple purchase requests occur simultaneously.
+3. **Transaction History:** Maintain records of purchases, coin insertions, refunds, and completed transactions for auditing and tracking.
+4. **Inventory Management:** Introduce administrative endpoints to restock beverages, update prices, and manage beverage availability.
+5. **API Documentation:** Integrate OpenAPI/Swagger to provide interactive API documentation and simplify API testing.
+6. **Containerization and CI/CD:** Add Docker for consistent deployment environments and GitHub Actions to automate testing and code validation.
+
 ## Notes
 
 This project is an implementation of the Vend-O-Matic take-home assessment. It uses Django to expose an HTTP API and does not include a frontend interface, as the assessment specifies HTTP-based testing.
