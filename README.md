@@ -55,7 +55,7 @@ vend-o-matic/
 1. Clone the repository:
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/krishamehta09/vend-o-matic.git
 cd vend-o-matic
 ```
 
