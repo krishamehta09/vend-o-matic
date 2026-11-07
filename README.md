@@ -71,11 +71,14 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-4. Install dependencies:
+4. Upgrade pip and install dependencies:
 
 ```bash
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
+This installs Django and all other required dependencies listed in `requirements.txt`.
 
 5. Apply Django migrations:
 
@@ -110,13 +113,16 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
-4. Install dependencies:
+4. Upgrade pip and install dependencies:
 
 ```powershell
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-5. Apply migrations:
+This installs Django and all other required dependencies listed in `requirements.txt`.
+
+5. Apply Django migrations:
 
 ```powershell
 python manage.py migrate
@@ -130,7 +136,7 @@ python manage.py runserver
 
 The service will be available at:
 
-`http://127.0.0.1:8000/`
+http://127.0.0.1:8000/
 
 ## API Documentation
 
@@ -241,7 +247,7 @@ Example response body:
 }
 ```
 
-One beverage is dispensed per successful transaction. Any quarters exceeding the purchase price are returned.
+One beverage is dispensed per successful transaction. Any quarters exceeding the purchase price are returned as change.
 
 ### 6. Out-of-Stock Scenario
 
@@ -254,7 +260,7 @@ PUT /inventory/1
 **Response**
 
 - Status: `404 Not Found`
-- Header: `X-Coins: <number of coins accepted>`
+- Header: `X-Coins: <number of coins returned>`
 
 Returned when the requested beverage is out of stock.
 
@@ -269,9 +275,19 @@ PUT /inventory/1
 **Response**
 
 - Status: `403 Forbidden`
-- Header: `X-Coins: 0 or 1`
+- Header: `X-Coins: <number of coins returned>`
 
 Returned when the inserted coins are insufficient to purchase the requested beverage.
+
+### HTTP Status Codes
+
+| Status Code | Description |
+|---|---|
+| `200 OK` | Inventory retrieved or beverage successfully purchased |
+| `204 No Content` | Coin successfully inserted or returned |
+| `400 Bad Request` | Invalid coin or malformed request |
+| `403 Forbidden` | Insufficient funds |
+| `404 Not Found` | Beverage does not exist or is out of stock |
 
 ## Assumptions and Design Decisions
 
@@ -291,7 +307,7 @@ The assessment does not explicitly define every transaction-handling detail. The
 Run the automated test suite:
 
 ```bash
-python manage.py test vending
+python manage.py test
 ```
 
 The test suite covers:
@@ -309,9 +325,9 @@ The test suite covers:
 
 ## Dependencies
 
-Dependencies are listed in `requirements.txt`.
+Dependencies are pinned in `requirements.txt` to ensure consistent installation.
 
-Install them using:
+Install all required packages using:
 
 ```bash
 pip install -r requirements.txt
