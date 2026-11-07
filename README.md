@@ -94,7 +94,7 @@ python manage.py runserver
 1. Clone the repository:
 
 ```powershell
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/krishamehta09/vend-o-matic.git
 cd vend-o-matic
 ```
 
