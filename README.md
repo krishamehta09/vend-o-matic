@@ -48,6 +48,52 @@ vend-o-matic/
 - Python 3.11 or later
 - pip
 
+## Python Installation
+
+Python 3.11 is recommended to run this application.
+
+If Python is not already installed, use one of the following methods.
+
+### Windows (PowerShell)
+
+Using Windows Package Manager (winget):
+
+```powershell
+winget install Python.Python.3.11
+```
+
+Alternatively, download Python from:
+https://www.python.org/downloads/windows/
+
+### macOS
+
+Using Homebrew:
+
+```bash
+brew install python@3.11
+```
+
+Alternatively, download Python from:
+https://www.python.org/downloads/macos/
+
+### Verify Python Installation
+
+**Windows:**
+
+```powershell
+python --version
+python -m pip --version
+```
+
+**macOS:**
+
+```bash
+python3.11 --version
+python3.11 -m pip --version
+```
+
+Ensure Python 3.11 is available before proceeding with project setup.
+
 ## Setup and Installation
 
 ### macOS / Linux
